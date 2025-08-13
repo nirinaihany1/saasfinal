@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sidebar-width-expanded: 16rem;
+  --sidebar-width-collapsed: 4rem;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* Smooth transitions */
+.transition-sidebar {
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Custom focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50;
+}
+
+/* Custom card hover effect */
+.card-hover {
+  @apply transition-all duration-200 hover:shadow-md;
+}
+
+/* Custom button styles */
+.btn-blue {
+  @apply bg-blue-600 hover:bg-blue-700 text-white;
+}
+
+.btn-red {
+  @apply bg-red-600 hover:bg-red-700 text-white;
+}
+
+.btn-green {
+  @apply bg-green-600 hover:bg-green-700 text-white;
+}
+
+/* Custom animation for sidebar */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  /* Improve form inputs on mobile */
+  input, select, textarea {
+    font-size: 16px !important; /* Prevent zoom on focus in iOS */
+  }
+  
+  /* Ensure buttons are large enough for touch */
+  button {
+    min-height: 44px;
+  }
+  
+  /* Improve table display on small screens */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  /* Make cards full width on mobile */
+  .card {
+    width: 100% !important;
+  }
+
+  /* Add padding to bottom of content to avoid logout button overlap */
+  main {
+    padding-bottom: 20px;
+  }
+}
+
+/* Fix for mobile sidebar */
+.mobile-sidebar-open {
+  overflow: hidden;
+}
+
+/* Fix for store stock inputs on mobile */
+@media (max-width: 640px) {
+  .store-stock-input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .store-stock-input input {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Ensure sidebar colors are applied correctly on all screen sizes */
+@media (max-width: 1023px) {
+  /* System admin sidebar colors */
+  .from-gray-900.to-gray-800 {
+    background: linear-gradient(to bottom, #1a202c, #2d3748);
+  }
+  
+  .from-gray-800.to-gray-900 {
+    background: linear-gradient(to right, #2d3748, #1a202c);
+  }
+  
+  .border-gray-700 {
+    border-color: #4a5568;
+  }
+  
+  /* Regular user sidebar colors */
+  .from-blue-900.to-blue-800 {
+    background: linear-gradient(to bottom, #1e3a8a, #1e40af);
+  }
+  
+  .from-blue-800.to-blue-900 {
+    background: linear-gradient(to right, #1e40af, #1e3a8a);
+  }
+  
+  .border-blue-700 {
+    border-color: #1d4ed8;
+  }
+}
